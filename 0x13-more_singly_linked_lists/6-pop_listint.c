@@ -1,24 +1,25 @@
 #include "lists.h"
 
 /**
- * pop_listint - deletes the head node of a linked list
- * @head: a pointer to the first component in the linked list
+ * pop_listint - Erase the head node of a linked list
+ * @head: double pointer to the first component in the linked list
  *
- * Return: Date in the elements that was erased, or 0 if the list is empty
+ * Return: data inside the components that was erased
+ * , or O if the list is empty
  */
 
-nt pop_listint(listint_t **head)
+int pop_listint(listint_t **head)
 {
-	int data;
+	int fig;
 	listint_t *temp;
 
-	if (*head == NULL)
+	if (!*head || !head)
 		return (0);
 
-	data = (*head)->n;
-	temp = *head;
-	*head = (*head)->next;
-	free(temp);
+	fig = (*head)->n;
+	temp = (*head)->next;
+	free(*head);
+	*head = temp;
 
-	return (data);
+	return (fig);
 }
