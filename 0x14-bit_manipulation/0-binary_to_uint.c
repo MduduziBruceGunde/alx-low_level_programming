@@ -1,4 +1,5 @@
 #include "main.h"
+#include <string.h>
 
 /**
  * binary_to_uint - converts a binary number to unsigned int
@@ -9,17 +10,19 @@
 
 unsigned int binary_to_uint(const char *b)
 {
-	unsigned int result = 0;
-
-	if (b == NULL)
+	if (!b)
 		return (0);
 
-	for (; *b != '\0'; b++)
+	size_t len = strlen(b);
+	unsigned int decimal_dig = 0;
+
+	for (size_t i = 0; i < len; i++)
 	{
-		if (*b != '0' && *b != '1')
+		if (b[i] < '0' || b[i] > '1')
 			return (0);
-		result = (result << 1) + (*b - '0');
+
+		decimal_dig = (decimal_dig << 1) | (b[i] - '0');
 	}
 
-	return (result);
+	return (decimal_dig);
 }
